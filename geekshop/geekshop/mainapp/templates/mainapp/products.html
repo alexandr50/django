@@ -55,32 +55,7 @@
                 </a>
             </div>
 
-            <div class="row">
-
-                {% for good in products %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#">
-                                <img class="card-img-top"
-                                     src="/media/{{good.image}}"
-                                     alt="">
-                            </a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">{{good.name}}</a>
-                                </h4>
-                                <h5>{{good.price}} руб.</h5>
-                                <p class="card-text">{{good.definition}}</p>
-                            </div>
-                            <div class="card-footer text-center">
-<!--                                <button type="button" class="btn btn-outline-success">Отправить в корзину</button>-->
-                                <a href="{% url 'basket:basket_add' good.id %}" class="btn btn-outline-success">Отправить в корзину></a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-            </div>
+           {% include 'mainapp/includes/cards.html' %}
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">

@@ -73,9 +73,15 @@ def profile(request):
             messages.error(request, form.errors)
 
     user_select = request.user
+    baskets = Basket.objects.filter(user=user_select)
+    total_quantity = sum(basket.quantity for basket in baskets)
+    total_sum = sum(basket.sum() for basket in baskets)
+
     context = {
         'title': 'Geekshop | Профиль',
         'form': UserProfileForm(instance=user_select),
-        'baskets': Basket.objects.filter(user=user_select)
+        'baskets': baskets,
+        'total_sum': total_sum,
+        'total_quantity': total_quantity
     }
     return render(request, 'authapp/profile.html', context)
