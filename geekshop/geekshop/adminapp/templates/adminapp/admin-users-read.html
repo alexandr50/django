@@ -1,7 +1,7 @@
 {% extends 'adminapp/base.html' %}
 {% block context %}
             <div class="container-fluid">
-                <h1 class="mt-4">Пользователи</h1>
+                <h1 class="mt-4">{{ title }}</h1>
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
@@ -34,7 +34,7 @@
 
                                 {% for user in users %}
                                 <tr>
-                                    <td><a href="{% url 'adminapp:admin_user_update' user.id %}" style="color: dodgerblue">{{ user.username }}</a></td>
+                                    <td><a href="{% url 'adminapp:admin_user_update' pk=user.id %}" style="color: dodgerblue">{{ user.username }}</a></td>
                                     <td>{{ user.first_name }}</td>
                                     <td>{{ user.last_name }}</td>
                                     <td>{{ user.email }}</td>

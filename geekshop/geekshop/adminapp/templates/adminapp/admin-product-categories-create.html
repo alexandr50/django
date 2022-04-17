@@ -22,7 +22,7 @@
     </div>
     {% endif %}
     <div class="container-fluid">
-        <h1 class="mt-4">Создание категорий продуктов</h1>
+        <h1 class="mt-4">{{ title }}</h1>
         <form action="{% url 'adminapp:admin_product_categories_create' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-row">
@@ -34,8 +34,8 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="form-group">
-                        <label class="small mb-1" for="{{ form.descriptions.id_for_label }}">Описание категории</label>
-                        {{ form.descriptions }}
+                        <label class="small mb-1" for="{{ form.description.id_for_label }}">Описание категории</label>
+                        {{ form.description }}
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -52,4 +52,6 @@
             </div>
         </form>
     </div>
+    </div>
+
     {% endblock %}

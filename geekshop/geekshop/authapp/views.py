@@ -2,10 +2,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
-# Create your views here.
 from django.urls import reverse
-
 from authapp.forms import UserLoginForm, UserRegisterForm, UserProfileForm
 from basket.models import Basket
 

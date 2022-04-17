@@ -22,11 +22,11 @@
     </div>
     {% endif %}
 <div class="container-fluid">
-    <h1 class="mt-4">Товары</h1>
+    <h1 class="mt-4">{{ title }}</h1>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Товары
+            {{ title }}
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -54,7 +54,7 @@
                     <tbody>
                     {% for product in products %}
                     <tr>
-                        <td><a href="{% url 'adminapp:admin_products_update' product.id %}"
+                        <td><a href="{% url 'adminapp:admin_products_update' pk=product.id %}"
                                style="color: dodgerblue">
                             {{ product.name }}
                         </a></td>

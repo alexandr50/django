@@ -11,7 +11,7 @@
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">{{good.name}}</a>
+                        <a href="{% url 'mainapp:detail' good.id %}">{{good.name}}</a>
                     </h4>
                     <h5>{{good.price}} руб.</h5>
                     <p class="card-text">{{good.definition}}</p>

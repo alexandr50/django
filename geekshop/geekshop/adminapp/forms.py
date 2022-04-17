@@ -63,7 +63,7 @@ class ProductCatAdminCreateForm(ModelForm):
         self.fields['description'].widget.attrs['plaseholder'] = 'Описание категории'
 
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control py-5'
+            field.widget.attrs['class'] = 'form-control py-4'
 
 class ProdAdminCreateForm(ModelForm):
 

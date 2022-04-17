@@ -2,7 +2,7 @@
 {% block context %}
 
 <div class="container-fluid">
-    <h1 class="mt-4">Создание пользователя</h1>
+    <h1 class="mt-4">{{ title }}</h1>
     <form action="{% url 'adminapp:admin_user_create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-row">
