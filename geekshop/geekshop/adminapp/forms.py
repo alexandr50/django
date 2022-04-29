@@ -7,7 +7,7 @@ from django import forms
 from django.forms import ModelForm
 
 from adminapp.validator import file_size
-from authapp.models import User
+from authapp.models import User, UserProfile
 from authapp.validator import validate_name
 from mainapp.models import ProductCategories, Product
 
@@ -56,6 +56,9 @@ class UserAdminProfileForm(UserChangeForm):
         self.fields['image'].widget.attrs['class'] = 'costom-file-input'
 
 
+
+
+
 class ProductCatAdminCreateForm(ModelForm):
     is_active = forms.BooleanField(required=False, initial={'is_active': True})
 
@@ -90,5 +93,8 @@ class ProdAdminCreateForm(ModelForm):
         self.fields['image'].widget.attrs['placeholder'] = 'Добавить фотографию'
 
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control py-4'
+            if field_name == 'category':
+                field.widget.attrs['class'] = 'form-control'
+            else:
+                field.widget.attrs['class'] = 'form-control py-4'
         self.fields['image'].widget.attrs['class'] = 'custom-file-input'

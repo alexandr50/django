@@ -17,6 +17,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from mainapp.views import index
+from django.views.i18n import set_language
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
@@ -24,6 +25,8 @@ urlpatterns = [
     path('authapp/', include('authapp.urls', namespace='authapp')),
     path('basket/', include('basket.urls', namespace='basket')),
     path('adminapp/', include('adminapp.urls', namespace='adminapp')),
+    path(r'i18n/', include('django.conf.urls.i18n')),
+    path('', include('social_django.urls', namespace='social'))
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

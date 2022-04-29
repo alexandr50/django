@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.i18n import set_language
 from adminapp.views import IndexTemplateView, UserListView, UserCreateView, UserUpdateView, \
     UserDeleteView, ProductCatListView, ProductCatCreateView, ProductCatUpdateView, ProductCatDeleteView, \
     ProductCreateView, ProductUpdateView, ProductDeleteView, ProductListView
@@ -18,5 +19,6 @@ urlpatterns = [
     path('product/', ProductListView.as_view(), name='admin_products'),
     path('product-create/', ProductCreateView.as_view(), name='admin_products_create'),
     path('product-update/<int:pk>/', ProductUpdateView.as_view(), name='admin_products_update'),
-    path('product-delete/<int:pk>/', ProductDeleteView.as_view(), name='admin_products_delete')
+    path('product-delete/<int:pk>/', ProductDeleteView.as_view(), name='admin_products_delete'),
+    path('lang/', set_language, name='set_language'),
 ]
