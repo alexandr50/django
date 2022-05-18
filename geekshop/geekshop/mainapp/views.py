@@ -27,13 +27,13 @@ def products(request, id_category=None, page=1):
     else:
         products_ = Product.objects.all()
 
-    paginator = Paginator(products_, per_page=2)
+    pagination = Paginator(products_, per_page=2)
     try:
-        product_pagination = paginator.page(page)
+        product_pagination = pagination.page(page)
     except PageNotAnInteger:
-        product_pagination = paginator.page(1)
+        product_pagination = pagination.page(1)
     except EmptyPage:
-        product_pagination = paginator.page(paginator.num_pages)
+        product_pagination = pagination.page(pagination.num_pages)
 
     content = {'title': 'GeekShop - Каталог',
                'categories': ProductCategories.objects.all(),
