@@ -30,7 +30,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, null=True, db_index=True, on_delete=models.CASCADE)
     about = models.TextField(verbose_name='о себе', blank=True, null=False)
     gender = models.CharField(verbose_name='пол', choices=GENDER_CHOICES, blank=True, max_length=2)
-    langs = models.CharField(verbose_name='язык', blank=True, max_length=5, default='RU')
+    langs = models.CharField(verbose_name='язык', blank=True, max_length=25, default='RU')
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
