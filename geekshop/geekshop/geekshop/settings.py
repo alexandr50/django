@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-SERVER = True
+SERVER = False
 if SERVER:
     DATABASES = {
         'default': {
