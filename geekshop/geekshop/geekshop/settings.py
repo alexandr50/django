@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-dkl#x6#s0vxzhz4@#j_=ktmmi^uu4&t-kh)m=b&=yb*fh5lj(@
 from dotenv import load_dotenv
 load_dotenv(BASE_DIR / '.env')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-SERVER = False
+SERVER = True
 if SERVER:
     DATABASES = {
         'default': {
