@@ -58,8 +58,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
-    'geekshop.mid.DisableCSRFMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    #'geekshop.mid.DisableCSRFMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-SERVER = True
+SERVER = False
 if SERVER:
     DATABASES = {
         'default': {
