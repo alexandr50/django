@@ -34,18 +34,18 @@ class Order(models.Model):
         return 'f Текущий заказ {self.pk}'
 
     def get_total_cost(self):
-        items = self.orderitems.select_related()
+        items = self.orderitems.select_related('product')
         return sum(list(map(lambda x: x.get_product_cost(), items)))
 
     def get_total_quantity(self):
-        items = self.orderitems.select_related()
+        items = self.orderitems.select_related('product')
         return sum(list(map(lambda x: x.quantity, items)))
 
     def get_items(self):
         pass
 
     def delete(self, using=None, keep_parents=False):
-        for item in self.orderitems.select_related():
+        for item in self.orderitems.select_related('product'):
             item.product.quantity += item.quantity
             item.save()
         self.is_active =False

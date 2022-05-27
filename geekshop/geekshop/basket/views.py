@@ -12,7 +12,7 @@ from mainapp.models import Product
 def basket_add(request, id):
     user_select = request.user
     product = Product.objects.get(id=id)
-    baskets = Basket.objects.filter(user=user_select, product=product)
+    baskets = Basket.objects.filter(user=user_select, product=product).select_related()
     if baskets:
         basket = baskets.first()
         basket.quantity += 1
@@ -52,13 +52,13 @@ def basket_remove(request, basket_id):
 @login_required
 def basket_edit(request, id_basket, quantity):
     if request.is_ajax():
-        basket = Basket.objects.get(id=id_basket)
+        basket = Basket.objects.get(id=id_basket).select_related()
         if quantity > 0:
             basket.quantity = quantity
             basket.save()
         else:
             basket.delete()
-    baskets = Basket.objects.filter(user=request.user)
+    baskets = Basket.objects.filter(user=request.user).select_related()
 
     context = {
         'baskets': baskets

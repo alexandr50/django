@@ -23,9 +23,9 @@ def index(request):
 
 def products(request, id_category=None, page=1):
     if id_category:
-        products_ = Product.objects.filter(category_id=id_category)
+        products_ = Product.objects.filter(category_id=id_category).select_related('category')
     else:
-        products_ = Product.objects.all()
+        products_ = Product.objects.all().select_related('category')
 
     pagination = Paginator(products_, per_page=2)
     try:
@@ -36,7 +36,7 @@ def products(request, id_category=None, page=1):
         product_pagination = pagination.page(pagination.num_pages)
 
     content = {'title': 'GeekShop - Каталог',
-               'categories': ProductCategories.objects.all(),
+               'categories': ProductCategories.objects.all().select_related(),
                'products': product_pagination,
                'time': now}
 
