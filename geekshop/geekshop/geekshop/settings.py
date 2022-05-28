@@ -107,6 +107,7 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 # }
 SERVER = True
 
+
 if SERVER:
     DATABASES = {
         'default': {
