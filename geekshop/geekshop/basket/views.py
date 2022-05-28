@@ -52,13 +52,13 @@ def basket_remove(request, basket_id):
 @login_required
 def basket_edit(request, id_basket, quantity):
     if request.is_ajax():
-        basket = Basket.objects.get(id=id_basket).select_related()
+        basket = Basket.objects.get(id=id_basket)
         if quantity > 0:
             basket.quantity = quantity
             basket.save()
         else:
             basket.delete()
-    baskets = Basket.objects.filter(user=request.user).select_related()
+    baskets = Basket.objects.filter(user=request.user)
 
     context = {
         'baskets': baskets
