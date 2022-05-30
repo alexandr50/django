@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django.core.cache.backends.memcached
 import social_django.middleware
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,6 +70,7 @@ MIDDLEWARE = [
 
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware'
 ]
 
 ROOT_URLCONF = 'geekshop.urls'
@@ -253,3 +256,14 @@ if DEBUG:
         'debug_toolbar.panels.profiling.ProfilingPanel',
         'template_profiler_panel.panels.template.TemplateProfilerPanel',
     ]
+
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 120
+CACHE_MIDDLEWARE_KEY_PREFIX = 'geekbrains'
+LOW_CACHE = True
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '89.108.70.138:11211'
+    }
+}
